@@ -16,8 +16,28 @@
   </header>
 
   <main class="container">
+    <!-- Day 8：四种页面状态（加载中 / 空 / 错误 / 正常），同一时刻只显示一种 -->
+    <div id="loading" class="loading" aria-live="polite">
+      <!-- 骨架屏：数据到达前的占位卡片 -->
+      <div class="skeleton-card"><span class="sk sk-rank"></span><span class="sk sk-title"></span><span class="sk sk-heat"></span></div>
+      <div class="skeleton-card"><span class="sk sk-rank"></span><span class="sk sk-title"></span><span class="sk sk-heat"></span></div>
+      <div class="skeleton-card"><span class="sk sk-rank"></span><span class="sk sk-title"></span><span class="sk sk-heat"></span></div>
+      <div class="skeleton-card"><span class="sk sk-rank"></span><span class="sk sk-title"></span><span class="sk sk-heat"></span></div>
+      <div class="skeleton-card"><span class="sk sk-rank"></span><span class="sk sk-title"></span><span class="sk sk-heat"></span></div>
+    </div>
+
+    <div id="empty" class="empty hidden">
+      <p class="empty-emoji">📭</p>
+      <p class="empty-title">今天还没有热点数据</p>
+      <p class="empty-desc">数据池是空的——等维护者更新后，这里就会出现今日榜单。</p>
+    </div>
+
+    <div id="error" class="error hidden">
+      <p id="errorMsg" class="error-msg">数据加载失败，请确认通过本地服务器访问后刷新重试。</p>
+      <button id="retryBtn" class="retry" type="button">重试</button>
+    </div>
+
     <ol id="list" class="list"></ol>
-    <p id="error" class="error hidden">数据加载失败，请确认通过本地服务器访问后刷新重试。</p>
   </main>
 
   <footer class="footer">
@@ -27,6 +47,7 @@
     </div>
   </footer>
 
+  <script src="js/components.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

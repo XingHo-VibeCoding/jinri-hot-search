@@ -87,9 +87,54 @@ main { flex: 1; padding: 18px 0 26px; }
 .item.hit { background: #fff7df; }
 .item.hit .title { color: #8a6d1a; }
 
-/* 错误提示 */
+/* Day 8 状态 1：加载中 — 骨架屏（占位卡片 + 微光扫过动画） */
+.loading {
+  background: #fff;
+  border: 1px solid #e7e9ee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.skeleton-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-top: 1px solid #f0f2f5;
+}
+.skeleton-card:first-child { border-top: none; }
+.sk {
+  display: inline-block;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eef0f3 25%, #f7f8fa 45%, #eef0f3 65%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+.sk-rank { width: 26px; height: 26px; }
+.sk-title { flex: 1; height: 15px; }
+.sk-heat { width: 64px; height: 12px; }
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Day 8 状态 2：空 — 数据池没有一条数据时 */
+.empty {
+  background: #fff;
+  border: 1px dashed #d6dae1;
+  border-radius: 10px;
+  padding: 44px 16px;
+  text-align: center;
+}
+.empty-emoji { font-size: 34px; }
+.empty-title { margin-top: 10px; font-size: 16px; font-weight: 700; color: #24292f; }
+.empty-desc { margin-top: 6px; font-size: 13px; color: #9aa1ab; }
+
+/* Day 8 状态 3：错误 — 提示 + 重试按钮 */
 .error {
-  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   background: #fdeaea;
   color: #c9302c;
   border: 1px solid #f3c1c1;
@@ -97,6 +142,20 @@ main { flex: 1; padding: 18px 0 26px; }
   padding: 12px 16px;
   font-size: 14px;
 }
+.error-msg { flex: 1; }
+.retry {
+  background: #c9302c;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 20px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.retry:hover { background: #a82622; }
+.retry:active { transform: scale(.97); }
+
 .hidden { display: none; }
 
 /* 页脚 */
